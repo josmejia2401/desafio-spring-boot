@@ -1,6 +1,7 @@
 package com.josmejia2401.nuevospa.service.impl;
 
 import com.josmejia2401.nuevospa.entity.EstadoTarea;
+import com.josmejia2401.nuevospa.logging.Logger;
 import com.josmejia2401.nuevospa.repository.EstadoTareaRepository;
 import com.josmejia2401.nuevospa.service.EstadoTareaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ public class EstadoTareaServiceImpl implements EstadoTareaService {
     @Autowired
     private EstadoTareaRepository estadoTareaRepository;
 
+    @Logger
     public List<EstadoTarea> listarTodos() {
         return estadoTareaRepository.findAll();
     }

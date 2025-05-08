@@ -4,6 +4,7 @@ import com.josmejia2401.nuevospa.dto.TareaRequestDto;
 import com.josmejia2401.nuevospa.dto.TareaResponseDto;
 import com.josmejia2401.nuevospa.entity.*;
 import com.josmejia2401.nuevospa.errors.ResourceNotFoundException;
+import com.josmejia2401.nuevospa.logging.Logger;
 import com.josmejia2401.nuevospa.repository.*;
 import com.josmejia2401.nuevospa.service.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,13 @@ public class TareaServiceImpl implements TareaService {
     @Autowired
     private EstadoTareaRepository estadoTareaRepository;
 
+    @Logger
     public List<TareaResponseDto> listarPorUsuario(String username) {
         Usuario usuario = usuarioRepository.findByUsername(username).orElseThrow();
         return tareaRepository.findByUsuario(usuario).stream().map(this::toDto).collect(Collectors.toList());
     }
 
+    @Logger
     public TareaResponseDto crear(String username, TareaRequestDto dto) {
         Usuario usuario = usuarioRepository.findByUsername(username).orElseThrow();
         EstadoTarea estado = estadoTareaRepository.findById(dto.getEstadoId()).orElseThrow();
@@ -42,6 +45,7 @@ public class TareaServiceImpl implements TareaService {
         return toDto(tareaRepository.save(tarea));
     }
 
+    @Logger
     public TareaResponseDto actualizar(Long id, String username, TareaRequestDto dto) {
         Tarea tarea = tareaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Registro no existe"));
         if (!tarea.getUsuario().getUsername().equals(username)) {
@@ -56,6 +60,7 @@ public class TareaServiceImpl implements TareaService {
         return toDto(tareaRepository.save(tarea));
     }
 
+    @Logger
     public void eliminar(Long id, String username) {
         Tarea tarea = tareaRepository.findById(id).orElseThrow();
         if (!tarea.getUsuario().getUsername().equals(username)) {

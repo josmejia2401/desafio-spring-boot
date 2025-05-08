@@ -4,6 +4,7 @@ import com.josmejia2401.nuevospa.dto.UserRequestDto;
 import com.josmejia2401.nuevospa.dto.UserResponseDto;
 import com.josmejia2401.nuevospa.entity.Usuario;
 import com.josmejia2401.nuevospa.errors.ResourceNotFoundException;
+import com.josmejia2401.nuevospa.logging.Logger;
 import com.josmejia2401.nuevospa.repository.UsuarioRepository;
 import com.josmejia2401.nuevospa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Logger
     public UserResponseDto createUser(UserRequestDto request) {
         Usuario user = new Usuario();
         user.setUsername(request.getUsername());
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Logger
     public UserResponseDto updateUser(Long id, UserRequestDto request) {
         Usuario user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
@@ -51,6 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Logger
     public void deleteUser(Long id) {
         Usuario user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
@@ -58,6 +62,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Logger
     public List<UserResponseDto> getAllUsers() {
         return userRepository.findAll()
                 .stream()
@@ -66,6 +71,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Logger
     public UserResponseDto getUserById(Long id) {
         Usuario user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
