@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "e504ae4b-9d60-42fb-bc63-c3022fa2d63c",
+		"name": "Gestión de Tareas - NUEVO SPA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "910217",
+		"_collection_link": "https://baype-app.postman.co/workspace/barbapp~9d5262ef-71e3-4c75-b318-afb7ce232839/collection/910217-e504ae4b-9d60-42fb-bc63-c3022fa2d63c?action=share&source=collection_link&creator=910217"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Tarea",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tarea de prueba\",\n    \"descripcion\": \"Descripci\\u00f3n de la tarea de prueba\",\n    \"estadoId\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tareas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"josmejia.2401@gmail.com\",\n    \"role\": \"user\",\n    \"password\": \"password\",\n    \"username\": \"username4\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Tareas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tareas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Tarea",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tarea modificada\",\n    \"descripcion\": \"Tarea actualizada\",\n    \"estadoId\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tareas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"josmejia.2401@gmail.com\",\n    \"role\": \"user\",\n    \"password\": \"password\",\n    \"username\": \"username\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuarios/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Tarea",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NjY1MjY2NiwiZXhwIjoxNzQ2Njg4NjY2fQ.PeJP8Zyk-DlIDNtzOqQiO31w03PzXaSNLd11li237dIoJVPopI8Y5W8ePmBynyrKDDLMtoBPCmgrXgdAuFwFoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tareas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tareas",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
